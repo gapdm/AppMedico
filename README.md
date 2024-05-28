@@ -1,12 +1,12 @@
 # ANTES DE INSTALAR
-Elimina el .example del .evn.example
+Elimina el .example del .evn.example\
 
 # COMANDOS PARA INSTALACION
-composer install
-php artisan key:generate
-php migrate --seed
-php artisan storage:link
+composer install\
+php artisan key:generate\
+php migrate --seed\
+php artisan storage:link\
 
 
 # COMANDO PARA EJECUTARLO
-php artisan serve
+php artisan serve\
