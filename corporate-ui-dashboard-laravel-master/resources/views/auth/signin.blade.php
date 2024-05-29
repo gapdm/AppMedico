@@ -35,17 +35,17 @@
                                         @csrf
                                         <label>Correo Electronico</label>
                                         <div class="mb-3">
-                                            <input type="email" id="email" name="email" class="form-control"
-                                                placeholder="Enter your email address"
-                                                value="{{ old('email') ? old('email') : 'admin@corporateui.com' }}"
-                                                aria-label="Email" aria-describedby="email-addon">
+                                            <input type="correo" id="correo" name="correo" class="form-control"
+                                                placeholder="Enter your correo address"
+                                                value="{{ old('correo') ? old('correo') : 'admin@corporateui.com' }}"
+                                                aria-label="correo" aria-describedby="correo-addon">
                                         </div>
                                         <label>Contraseña</label>
                                         <div class="mb-3">
-                                            <input type="password" id="password" name="password"
-                                                value="{{ old('password') ? old('password') : 'secret' }}"
-                                                class="form-control" placeholder="Enter password" aria-label="Password"
-                                                aria-describedby="password-addon">
+                                            <input type="contra" id="contra" name="contra"
+                                                value="{{ old('contra') ? old('contra') : 'secret' }}"
+                                                class="form-control" placeholder="Enter contra" aria-label="contra"
+                                                aria-describedby="contra-addon">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-dark w-100 mt-4 mb-3">Iniciar sesión</button>

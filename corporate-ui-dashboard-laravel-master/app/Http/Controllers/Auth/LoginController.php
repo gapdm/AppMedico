@@ -30,9 +30,9 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('correo', 'contra');
 
-        $rememberMe = $request->rememberMe ? true : false;
+        $rememberMe = false;
 
         if (Auth::attempt($credentials, $rememberMe)) {
             $request->session()->regenerate();
@@ -43,8 +43,8 @@ class LoginController extends Controller
 
 
         return back()->withErrors([
-            'message' => 'The provided credentials do not match our records.',
-        ])->withInput($request->only('email'));
+            'message' => 'Los datos ingresados no pertenecen a nuestros registros.',
+        ])->withInput($request->only('correo'));
     }
 
 
