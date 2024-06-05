@@ -42,10 +42,10 @@
                                         </div>
                                         <label>Contraseña</label>
                                         <div class="mb-3">
-                                            <input type="contra" id="contra" name="contra"
-                                                value="{{ old('contra') ? old('contra') : 'secret' }}"
-                                                class="form-control" placeholder="Enter contra" aria-label="contra"
-                                                aria-describedby="contra-addon">
+                                            <input type="password" id="password" name="password"
+                                                value="{{ old('password') ? old('password') : 'secret' }}"
+                                                class="form-control" placeholder="Ingrese la contraseña" aria-label="password"
+                                                aria-describedby="password-addon">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-dark w-100 mt-4 mb-3">Iniciar sesión</button>
@@ -66,10 +66,8 @@
                                     style="background-image:url('../assets/img/image-sign-in.jpg')">
                                     <div
                                         class="blur mt-12 p-4 text-center border border-white border-radius-md position-absolute fixed-bottom m-4">
-                                        <h2 class="mt-3 text-dark font-weight-bold">Enter our global community of
-                                            developers.</h2>
-                                        <h6 class="text-dark text-sm mt-5">Copyright © 2022 Corporate UI Design System
-                                            by Creative Tim.</h6>
+                                        <h2 class="mt-3 text-dark font-weight-bold">Centro medico para el que diseñamos</h2>
+                                        <h6 class="text-dark text-sm mt-5">Slogan chido para llamar la atencion</h6>
                                     </div>
                                 </div>
                             </div>

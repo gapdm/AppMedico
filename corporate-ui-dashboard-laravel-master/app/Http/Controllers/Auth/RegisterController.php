@@ -34,19 +34,23 @@ class RegisterController extends Controller
 
         $request->validate([
 
-            'name' => 'required|min:3|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'nombre' => 'required|min:3|max:255',
+            'apellido' => 'required|min:3|max:255',
+            'correo' => 'required|email|max:255|unique:users',
             'password' => 'required|min:7|max:255',
         ], [
-            'name.required' => 'El nombre es requerido',
-            'email.required' => 'El correo es requerido',
+            'nombre.required' => 'El nombre es requerido',
+            'apellido.required' => 'El nombre es requerido',
+            'correo.required' => 'El correo es requerido',
             'password.required' => 'La contraseña es requerida',
         ]);
 
         $user = User::create([
-            'name' => $request->nombre,
-            'email' => $request->correo,
-            'password' => Hash::make($request->contra),
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'correo' => $request->correo,
+            'tipo' => 1,
+            'password' => Hash::make($request->password),
         ]);
 
 

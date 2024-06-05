@@ -30,7 +30,7 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
-        $credentials = $request->only('correo', 'contra');
+        $credentials = $request->only('correo', 'password');
 
         $rememberMe = false;
 

@@ -47,9 +47,6 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="text-start position-absolute fixed-bottom ms-7">
-                                        <h6 class="text-white text-sm mb-5">Derechos de autor a no se google o algo asi.</h6>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,6 +68,15 @@
                                                 <span class="text-danger text-sm">{{ $message }}</span>
                                             @enderror
                                         </div>
+                                        <label>Apellidos</label>
+                                        <div class="mb-3">
+                                            <input type="text" id="apellido" name="apellido" class="form-control"
+                                                placeholder="Ingresa tus apellidos" value="{{old("apellido")}}" aria-label="apellido"
+                                                aria-describedby="apellido-addon">
+                                            @error('apellido')
+                                                <span class="text-danger text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                         <label>Correo Electronico</label>
                                         <div class="mb-3">
                                             <input type="correo" id="correo" name="correo" class="form-control"
@@ -82,10 +88,10 @@
                                         </div>
                                         <label>Contraseña</label>
                                         <div class="mb-3">
-                                            <input type="contra" id="contra" name="contra" class="form-control"
-                                                placeholder="Crea una contraseña" aria-label="contra"
-                                                aria-describedby="contra-addon">
-                                            @error('contra')
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                placeholder="Crea una contraseña" aria-label="password"
+                                                aria-describedby="password-addon">
+                                            @error('password')
                                                 <span class="text-danger text-sm">{{ $message }}</span>
                                             @enderror
                                         </div>
