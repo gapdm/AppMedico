@@ -18,19 +18,19 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret'),
         ]); 
 
-        DB::table('expedientes')->insert([
-            'id_paciente' => 1,
-            'fecha_reg' => now(),
-            'fecha_actu' => now(),
-            'seguimiento' => 'Le duele la panza :('
-        ]);
-
-        DB::table('pacientes')->insert([
+        DB::table('paciente')->insert([
             'nombre' => "Juanito",
             'edad' => 23,
             'sexo' => 'H',
-            'telefono' => '+528342764567',
-            'id_exp' => 1
+            'telefono' => '+528342764567'
+        ]);
+
+        DB::table('expediente')->insert([
+            'id_paciente' => 1,
+            'fecha_reg' => now(),
+            'fecha_act' => now(),
+            'seguimiento' => 'Le duele la panza :(',
+            'archivos' => 'radiografia1.png'
         ]);
     }
 }

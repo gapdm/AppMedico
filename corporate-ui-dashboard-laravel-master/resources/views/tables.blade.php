@@ -1,6 +1,56 @@
 <x-app-layout>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <x-app.navbar />
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+
+        <!-- Modal -->
+        <div class="modal fade" id="registrarPacienteModal" tabindex="-1" role="dialog" aria-labelledby="registrarPacienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrarPacienteModalLabel">Registrar Paciente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registrarPacienteForm" action="{{ route('pacientes.store') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edad">Edad</label>
+                                <input type="number" class="form-control" id="edad" name="edad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sexo">Sexo</label>
+                                <select class="form-control" id="sexo" name="sexo" required>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="text" class="form-control" id="telefono" name="telefono" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
         <div class="container-fluid py-4 px-5">
             <div class="row">
                 <div class="col-12">
@@ -12,13 +62,10 @@
                                     <p class="text-sm">Informacion de pacientes</p>
                                 </div>
                                 <div class="ms-auto d-flex">
-                                    <button type="button"
-                                        class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2">
+                                    <button type="button" class="btn btn-sm btn-dark btn-icon d-flex align-items-center me-2" data-toggle="modal" data-target="#registrarPacienteModal">
                                         <span class="btn-inner--icon">
-                                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24" fill="currentColor" class="d-block me-2">
-                                                <path
-                                                    d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                                            <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="d-block me-2">
+                                                <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"/>
                                             </svg>
                                         </span>
                                         <span class="btn-inner--text">Registrar paciente</span>
@@ -30,11 +77,8 @@
                             <div class="border-bottom py-3 px-3 d-sm-flex align-items-center">
                                 <div class="input-group w-sm-25 ms-auto">
                                     <span class="input-group-text text-body">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z">
-                                            </path>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
                                         </svg>
                                     </span>
                                     <input type="text" class="form-control" placeholder="Buscar">
@@ -44,53 +88,72 @@
                                 <table class="table align-items-center mb-0">
                                     <thead class="bg-gray-100">
                                         <tr>
-                                            <th class="text-secondary text-xs font-weight-semibold opacity-7">Nombre
-                                            </th>
-                                            <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
-                                                Edad</th>
-                                            <th
-                                                class="text-center text-secondary text-xs font-weight-semibold opacity-7">
-                                                Sexo</th>
-                                            <th
-                                                class="text-center text-secondary text-xs font-weight-semibold opacity-7">
-                                                Telefono</th>
-                                            <th
-                                                class="text-center text-secondary text-xs font-weight-semibold opacity-7">
-                                                Expediente</th>
+                                            <th class="text-secondary text-xs font-weight-semibold opacity-7">Nombre</th>
+                                            <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">Edad</th>
+                                            <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Sexo</th>
+                                            <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Telefono</th>
+                                            <th class="text-center text-secondary text-xs font-weight-semibold opacity-7">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($pacientes as $paciente)
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex align-items-center">
-                                                        <!-- Assuming you have an image URL in your database, replace '../assets/img/team-2.jpg' with the actual field name -->
-                                                        <img src="{{ $paciente->image_url }}" class="avatar avatar-sm rounded-circle me-2" alt="user1">
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="{{ $paciente->avatar_url ?? '../assets/img/team-2.jpg' }}" class="avatar avatar-sm rounded-circle me-2" alt="{{ $paciente->nombre }}">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center ms-1">
+                                                            <h6 class="mb-0 text-sm font-weight-semibold">{{ $paciente->nombre }}</h6>
+                                                            <p class="text-sm text-secondary mb-0">{{ $paciente->email ?? 'No email' }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="d-flex flex-column justify-content-center ms-1">
-                                                        <h6 class="mb-0 text-sm font-weight-semibold">{{ $paciente->nombre }}</h6>
-                                                        <!-- Replace 'john@creative-tim.com' with the actual email field -->
-                                                        <p class="text-sm text-secondary mb-0">{{ $paciente->email }}</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <!-- Assuming 'edad' is a field in your database -->
-                                                <p class="text-sm text-dark font-weight-semibold mb-0">{{ $paciente->edad }}</p>
-                                            </td>
-                                            <!-- Add similar lines for other fields -->
-                                        </tr>
+                                                </td>
+                                                <td>
+                                                    <p class="text-sm text-dark font-weight-semibold mb-0">{{ $paciente->edad }}</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <p class="text-sm text-dark font-weight-semibold mb-0">{{ $paciente->sexo }}</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <p class="text-sm text-dark font-weight-semibold mb-0">{{ $paciente->telefono }}</p>
+                                                </td>
+                                                <td class="text-center">
+                                                    <button class="btn btn-icon btn-sm btn-info" onclick="verExpediente({{ $paciente->id }})">
+                                                        <i class="fas fa-file-alt"></i>
+                                                    </button>
+                                                    <button class="btn btn-icon btn-sm btn-warning" onclick="modificarPaciente({{ $paciente->id }})">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-icon btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este paciente?')">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
-                                    
                                 </table>
                             </div>
                             <div class="border-top py-3 px-3 d-flex align-items-center">
-                                <p class="font-weight-semibold mb-0 text-dark text-sm">Page 1 of 10</p>
+                                <p class="font-weight-semibold mb-0 text-dark text-sm">
+                                    Pagina {{ $pacientes->currentPage() }} de {{ $pacientes->lastPage() }}
+                                </p>
                                 <div class="ms-auto">
-                                    <button class="btn btn-sm btn-white mb-0">Previous</button>
-                                    <button class="btn btn-sm btn-white mb-0">Next</button>
+                                    @if ($pacientes->onFirstPage())
+                                        <button class="btn btn-sm btn-white mb-0" disabled>Anterior</button>
+                                    @else
+                                        <a href="{{ $pacientes->previousPageUrl() }}" class="btn btn-sm btn-white mb-0">Anterior</a>
+                                    @endif
+                        
+                                    @if ($pacientes->hasMorePages())
+                                        <a href="{{ $pacientes->nextPageUrl() }}" class="btn btn-sm btn-white mb-0">Siguiente</a>
+                                    @else
+                                        <button class="btn btn-sm btn-white mb-0" disabled>Siguiente</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -492,7 +555,7 @@
                                 </table>
                             </div>
                             <div class="border-top py-3 px-3 d-flex align-items-center">
-                                <button class="btn btn-sm btn-white d-sm-block d-none mb-0">Previous</button>
+                                <button class="btn btn-sm btn-white d-sm-block d-none mb-0">Anterior</button>
                                 <nav aria-label="..." class="ms-auto">
                                     <ul class="pagination pagination-light mb-0">
                                         <li class="page-item active" aria-current="page">
@@ -514,7 +577,7 @@
                                                 href="javascript:;">10</a></li>
                                     </ul>
                                 </nav>
-                                <button class="btn btn-sm btn-white d-sm-block d-none mb-0 ms-auto">Next</button>
+                                <button class="btn btn-sm btn-white d-sm-block d-none mb-0 ms-auto">Siguiente</button>
                             </div>
                         </div>
                     </div>

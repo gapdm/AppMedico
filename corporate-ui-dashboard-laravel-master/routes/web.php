@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\PacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
 
-Route::get('/tables', function () {
-    return view('tables');
-})->name('tables')->middleware('auth');
+Route::get('/tables', [PacienteController::class, 'index'])->name('tables')->middleware('auth');
 
 Route::get('/wallet', function () {
     return view('wallet');
@@ -54,6 +53,11 @@ Route::get('/signup', function () {
 Route::get('/sign-up', [RegisterController::class, 'create'])
     ->middleware('guest')
     ->name('sign-up');
+
+Route::resource('pacientes', PacienteController::class);
+Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
+Route::get('/pacientes/{id}', 'PacienteController@getPaciente')->name('pacientes.get');
+
 
 Route::post('/sign-up', [RegisterController::class, 'store'])
     ->middleware('guest');
