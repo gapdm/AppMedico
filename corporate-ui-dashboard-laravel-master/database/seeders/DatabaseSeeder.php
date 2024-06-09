@@ -32,5 +32,9 @@ class DatabaseSeeder extends Seeder
             'seguimiento' => 'Le duele la panza :(',
             'archivos' => 'radiografia1.png'
         ]);
+
+        DB::table('tipo_servicio')->insert([
+            'tipo' => 'TipoPro',
+        ]);
     }
 }

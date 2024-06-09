@@ -8,6 +8,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\ServicioController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,13 +33,9 @@ Route::get('/dashboard', function () {
 
 Route::get('/tables', [PacienteController::class, 'index'])->name('tables')->middleware('auth');
 
-Route::get('/wallet', function () {
-    return view('wallet');
-})->name('wallet')->middleware('auth');
+Route::get('/wallet', [MedicoController::class, 'index'])->name('wallet')->middleware('auth');
 
-Route::get('/RTL', function () {
-    return view('RTL');
-})->name('RTL')->middleware('auth');
+Route::get('/RTL', [ServicioController::class, 'index'])->name('RTL')->middleware('auth');
 
 Route::get('/profile', function () {
     return view('account-pages.profile');
@@ -58,6 +57,13 @@ Route::resource('pacientes', PacienteController::class);
 Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
 Route::get('/pacientes/{id}', 'PacienteController@getPaciente')->name('pacientes.get');
 
+Route::resource('medicos', MedicoController::class);
+Route::delete('/medicos/{medico}', [MedicoController::class, 'destroy'])->name('medicos.destroy');
+Route::get('/medicos/{id}', 'MedicoController@getPaciente')->name('medicos.get');
+
+Route::resource('servicios', servicioController::class);
+Route::delete('/servicios/{servicio}', [servicioController::class, 'destroy'])->name('servicios.destroy');
+Route::get('/servicios/{id}', 'servicioController@getservicio')->name('servicios.get');
 
 Route::post('/sign-up', [RegisterController::class, 'store'])
     ->middleware('guest');
