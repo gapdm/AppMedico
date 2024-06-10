@@ -95,6 +95,17 @@
                                                 <span class="text-danger text-sm">{{ $message }}</span>
                                             @enderror
                                         </div>
+                                        <label>Tipo de Usuario</label>
+                                        <div class="mb-3">
+                                            <select id="tipo_usuario" name="tipo_usuario" class="form-control" aria-label="tipo_usuario">
+                                                <option value="0" {{ old('tipo_usuario') == '0' ? 'selected' : '' }}>Usuario</option>
+                                                <option value="1" {{ old('tipo_usuario') == '1' ? 'selected' : '' }}>Secretaria</option>
+                                                <option value="2" {{ old('tipo_usuario') == '2' ? 'selected' : '' }}>Doctor</option>
+                                            </select>
+                                            @error('tipo_usuario')
+                                                <span class="text-danger text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-dark w-100 mt-4 mb-3">Registrarse</button>
                                         </div>

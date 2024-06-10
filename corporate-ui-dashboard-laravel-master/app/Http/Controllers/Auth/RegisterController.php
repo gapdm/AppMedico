@@ -49,7 +49,7 @@ class RegisterController extends Controller
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'correo' => $request->correo,
-            'tipo' => $request->tipo,
+            'tipo' => $request->tipo_usuario,
             'password' => Hash::make($request->password),
         ]);
 
